@@ -9,7 +9,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Caption } from "../components/Caption";
+import { Narration } from "../components/Caption";
 import { SampleDataBadge, StepChip } from "../components/SceneTitle";
 import { Highlight, Screen } from "../components/Screen";
 import { colors, easeOut, fontFamily } from "../theme";
@@ -18,10 +18,10 @@ import { colors, easeOut, fontFamily } from "../theme";
 // "Coverage and approval" panels); the card only restates what is on screen.
 const checks = [
   { at: 70, label: "Issue", value: "Heating, one radiator", tone: "ok" },
-  { at: 100, label: "Urgency", value: "Normal, no safety risk", tone: "ok" },
-  { at: 140, label: "Contract", value: "Included in the contract", tone: "ok" },
+  { at: 122, label: "Urgency", value: "Normal, no safety risk", tone: "ok" },
+  { at: 150, label: "Contract", value: "Included in the contract", tone: "ok" },
   {
-    at: 170,
+    at: 185,
     label: "Budget",
     value: "180 EUR, over the 150 EUR limit",
     tone: "warn",
@@ -110,16 +110,16 @@ export const AnalysisScene: React.FC = () => {
           { f: 0, x: 960, y: 494, zoom: 0.79 },
           { f: 40, x: 960, y: 494, zoom: 0.79 },
           { f: 72, x: 1312, y: 560, zoom: 1.25 },
-          { f: 118, x: 1312, y: 600, zoom: 1.25 },
-          { f: 150, x: 1312, y: 1060, zoom: 1.25 },
-          { f: 240, x: 1312, y: 1080, zoom: 1.25 },
+          { f: 128, x: 1312, y: 600, zoom: 1.25 },
+          { f: 160, x: 1312, y: 1060, zoom: 1.25 },
+          { f: 245, x: 1312, y: 1080, zoom: 1.25 },
         ]}
         overlay={
           <>
-            <Highlight x={1548} y={340} w={304} h={185} from={62} to={98} />
-            <Highlight x={1548} y={545} w={304} h={70} from={90} to={130} />
-            <Highlight x={1548} y={940} w={304} h={62} from={135} to={165} />
-            <Highlight x={1548} y={1095} w={304} h={70} from={165} to={260} />
+            <Highlight x={1548} y={340} w={304} h={185} from={62} to={112} />
+            <Highlight x={1548} y={545} w={304} h={70} from={114} to={148} />
+            <Highlight x={1548} y={940} w={304} h={62} from={146} to={182} />
+            <Highlight x={1548} y={1095} w={304} h={70} from={182} to={280} />
           </>
         }
       />
@@ -196,7 +196,7 @@ export const AnalysisScene: React.FC = () => {
       </Sequence>
       <Sequence
         name="Check: urgency"
-        from={100}
+        from={122}
         durationInFrames={fps}
         premountFor={fps}
       >
@@ -204,7 +204,7 @@ export const AnalysisScene: React.FC = () => {
       </Sequence>
       <Sequence
         name="Check: contract"
-        from={140}
+        from={150}
         durationInFrames={fps}
         premountFor={fps}
       >
@@ -212,7 +212,7 @@ export const AnalysisScene: React.FC = () => {
       </Sequence>
       <Sequence
         name="Check: budget"
-        from={170}
+        from={185}
         durationInFrames={fps}
         premountFor={fps}
       >
@@ -223,12 +223,12 @@ export const AnalysisScene: React.FC = () => {
         />
       </Sequence>
 
-      <Caption from={0.3 * fps} durationInFrames={3.1 * fps}>
+      <Narration voice="s3a" from={8}>
         The AI turns the conversation into a structured case.
-      </Caption>
-      <Caption from={3.5 * fps} durationInFrames={4.4 * fps}>
+      </Narration>
+      <Narration voice="s3b" from={104}>
         Your rules then set urgency, check the contract and the cost limit.
-      </Caption>
+      </Narration>
     </AbsoluteFill>
   );
 };

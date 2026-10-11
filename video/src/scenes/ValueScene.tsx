@@ -1,7 +1,17 @@
+import { Audio } from "@remotion/media";
 import React from "react";
-import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
+import {
+  AbsoluteFill,
+  Easing,
+  interpolate,
+  Sequence,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { Mark } from "../components/Mark";
 import { colors, easeOut, fontFamily } from "../theme";
+import { voiceFrames } from "../voice";
 
 // Each pillar restates a design rule of the app (see AGENTS.md in the app repo).
 const pillars = [
@@ -21,6 +31,7 @@ const pillars = [
 
 export const ValueScene: React.FC = () => {
   const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const enter = (delay: number) => ({
     opacity: interpolate(frame, [delay, delay + 16], [0, 1], {
       extrapolateLeft: "clamp",
@@ -120,6 +131,15 @@ export const ValueScene: React.FC = () => {
           </div>
         ))}
       </div>
+      {/* The tagline is already on screen, so this line has no caption. */}
+      <Sequence
+        name="Voice: s6"
+        from={24}
+        durationInFrames={voiceFrames.s6 + 4}
+        premountFor={fps}
+      >
+        <Audio src={staticFile("voice/s6.mp3")} volume={0.8} />
+      </Sequence>
     </AbsoluteFill>
   );
 };

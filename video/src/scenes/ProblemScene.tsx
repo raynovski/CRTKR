@@ -6,7 +6,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Caption } from "../components/Caption";
+import { Narration } from "../components/Caption";
 import { colors, easeOut, fontFamily } from "../theme";
 
 const fragments = [
@@ -44,13 +44,13 @@ export const ProblemScene: React.FC = () => {
             fontWeight: 500,
             opacity: interpolate(
               frame,
-              [f.delay, f.delay + 14, 120, 140],
+              [f.delay, f.delay + 14, 150, 170],
               [0, 1, 1, 0.25],
               { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
             ),
             translate: interpolate(
               frame,
-              [f.delay, 180],
+              [f.delay, 210],
               ["0px 30px", `${f.drift}px -10px`],
               {
                 extrapolateLeft: "clamp",
@@ -58,7 +58,7 @@ export const ProblemScene: React.FC = () => {
                 easing: Easing.bezier(...easeOut),
               },
             ),
-            filter: `blur(${interpolate(frame, [120, 140], [0, 3], {
+            filter: `blur(${interpolate(frame, [150, 170], [0, 3], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             })}px)`,
@@ -115,10 +115,10 @@ export const ProblemScene: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <Caption from={0.4 * fps} durationInFrames={5.4 * fps} tone="light">
+      <Narration voice="s1" from={0.4 * fps} tone="light">
         Facility teams still handle every repair by hand: calls, emails,
         contracts and budget checks.
-      </Caption>
+      </Narration>
     </AbsoluteFill>
   );
 };

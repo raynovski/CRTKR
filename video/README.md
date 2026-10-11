@@ -1,6 +1,6 @@
 # CareTaker product demo video
 
-A 40-second, 1920×1080 product demo of CareTaker, built with [Remotion](https://www.remotion.dev).
+A 44-second, 1920×1080 product demo, with English voiceover and captions, of CareTaker, built with [Remotion](https://www.remotion.dev).
 
 ## Preview and render
 
@@ -37,6 +37,13 @@ app's matching order in `src/lib/caretaker/engine.ts`. The app has no SLA
 feature, so the video shows urgency/priority instead.
 
 ## Audio
+
+The voiceover in `public/voice/` was generated locally with the open-source
+[Kokoro](https://github.com/thewh1teagle/kokoro-onnx) TTS model (voice
+`af_heart`). Each clip reads the caption shown with it (`<Narration>` in
+`src/components/Caption.tsx`). Clip lengths are in `src/voice.ts`, so update
+that file if you replace a clip, for example with an ElevenLabs recording.
+
 
 The sound effects and the ambient bed in `public/sfx/` were synthesized with
 ffmpeg for this video, so there are no licensing questions. The font in

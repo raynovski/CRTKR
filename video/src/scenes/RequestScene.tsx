@@ -10,7 +10,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Caption } from "../components/Caption";
+import { Narration } from "../components/Caption";
 import { SampleDataBadge, SceneTitle } from "../components/SceneTitle";
 import { colors, easeOut, fontFamily } from "../theme";
 
@@ -21,8 +21,8 @@ const S = PHONE_W / 390; // CSS px -> phone px
 
 const screens = [
   { src: "tenant-home.png", in: 0 },
-  { src: "tenant-new-typed.png", in: 50 },
-  { src: "tenant-case-1040.png", in: 118 },
+  { src: "tenant-new-typed.png", in: 55 },
+  { src: "tenant-case-1040.png", in: 126 },
 ];
 
 const Tap: React.FC<{ x: number; y: number; at: number }> = ({ x, y, at }) => {
@@ -146,7 +146,7 @@ export const RequestScene: React.FC = () => {
           ))}
           {/* "Report a problem" button, then the send button */}
           <Tap x={195} y={212} at={40} />
-          <Tap x={350} y={804} at={104} />
+          <Tap x={350} y={804} at={112} />
         </div>
       </div>
 
@@ -160,7 +160,7 @@ export const RequestScene: React.FC = () => {
       </Sequence>
       <Sequence
         name="Tap: send"
-        from={104}
+        from={112}
         durationInFrames={fps}
         premountFor={fps}
       >
@@ -168,19 +168,19 @@ export const RequestScene: React.FC = () => {
       </Sequence>
       <Sequence
         name="Message in"
-        from={118}
+        from={126}
         durationInFrames={fps}
         premountFor={fps}
       >
         <Audio src={staticFile("sfx/tick.wav")} volume={0.45} />
       </Sequence>
 
-      <Caption from={0.3 * fps} durationInFrames={3.6 * fps}>
+      <Narration voice="s2a" from={8}>
         A tenant reports a cold radiator from their phone, by text or voice.
-      </Caption>
-      <Caption from={3.9 * fps} durationInFrames={3 * fps}>
+      </Narration>
+      <Narration voice="s2b" from={138}>
         The assistant asks one follow-up question, and the case is opened.
-      </Caption>
+      </Narration>
     </AbsoluteFill>
   );
 };

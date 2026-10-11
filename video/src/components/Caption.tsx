@@ -1,12 +1,15 @@
+import { Audio } from "@remotion/media";
 import React from "react";
 import {
   Easing,
   interpolate,
   Sequence,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { colors, easeOut, fontFamily } from "../theme";
+import { type VoiceId, voiceFrames } from "../voice";
 
 type CaptionProps = {
   readonly children: string;
@@ -94,5 +97,31 @@ export const Caption: React.FC<CaptionProps> = ({
         {children}
       </CaptionInner>
     </Sequence>
+  );
+};
+
+/** Voiceover clip with its matching on-screen caption. */
+export const Narration: React.FC<{
+  readonly voice: VoiceId;
+  readonly from: number;
+  readonly children: string;
+  readonly tone?: "light" | "dark";
+}> = ({ voice, from, children, tone }) => {
+  const { fps } = useVideoConfig();
+  const length = voiceFrames[voice];
+  return (
+    <>
+      <Caption from={from - 4} durationInFrames={length + 16} tone={tone}>
+        {children}
+      </Caption>
+      <Sequence
+        name={`Voice: ${voice}`}
+        from={from}
+        durationInFrames={length + 4}
+        premountFor={fps}
+      >
+        <Audio src={staticFile(`voice/${voice}.mp3`)} volume={0.8} />
+      </Sequence>
+    </>
   );
 };

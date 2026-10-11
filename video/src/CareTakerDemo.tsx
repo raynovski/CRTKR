@@ -18,12 +18,12 @@ import { ValueScene } from "./scenes/ValueScene";
 import { colors } from "./theme";
 
 export const SCENES = {
-  problem: 180,
-  request: 210,
-  analysis: 240,
-  match: 210,
-  approval: 240,
-  value: 195,
+  problem: 210,
+  request: 270,
+  analysis: 245,
+  match: 240,
+  approval: 255,
+  value: 180,
 };
 export const TRANSITION = 18;
 export const TOTAL_DURATION =
@@ -49,7 +49,7 @@ export const CareTakerDemo: React.FC = () => {
       <TransitionSeries>
         <TransitionSeries.Sequence
           name="1 · Problem"
-          durationInFrames={180}
+          durationInFrames={210}
           premountFor={fps}
         >
           <ProblemScene />
@@ -60,7 +60,7 @@ export const CareTakerDemo: React.FC = () => {
         />
         <TransitionSeries.Sequence
           name="2 · Request"
-          durationInFrames={210}
+          durationInFrames={270}
           premountFor={fps}
         >
           <RequestScene />
@@ -71,7 +71,7 @@ export const CareTakerDemo: React.FC = () => {
         />
         <TransitionSeries.Sequence
           name="3 · AI analysis"
-          durationInFrames={240}
+          durationInFrames={245}
           premountFor={fps}
         >
           <AnalysisScene />
@@ -82,7 +82,7 @@ export const CareTakerDemo: React.FC = () => {
         />
         <TransitionSeries.Sequence
           name="4 · Technician match"
-          durationInFrames={210}
+          durationInFrames={240}
           premountFor={fps}
         >
           <MatchScene />
@@ -93,7 +93,7 @@ export const CareTakerDemo: React.FC = () => {
         />
         <TransitionSeries.Sequence
           name="5 · Approval"
-          durationInFrames={240}
+          durationInFrames={255}
           premountFor={fps}
         >
           <ApprovalScene />
@@ -104,7 +104,7 @@ export const CareTakerDemo: React.FC = () => {
         />
         <TransitionSeries.Sequence
           name="6 · Value"
-          durationInFrames={195}
+          durationInFrames={180}
           premountFor={fps}
         >
           <ValueScene />
@@ -118,7 +118,7 @@ export const CareTakerDemo: React.FC = () => {
           interpolate(
             f,
             [0, 30, TOTAL_DURATION - 45, TOTAL_DURATION],
-            [0, 0.7, 0.7, 0],
+            [0, 0.42, 0.42, 0],
             {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",

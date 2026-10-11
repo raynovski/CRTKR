@@ -8,14 +8,14 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Caption } from "../components/Caption";
+import { Narration } from "../components/Caption";
 import { Cursor } from "../components/Cursor";
 import { SampleDataBadge, StepChip } from "../components/SceneTitle";
 import { Highlight, Screen } from "../components/Screen";
 import { colors, fontFamily } from "../theme";
 
-const CLICK = 112;
-const SWITCH = 136; // approved case screen fades in
+const CLICK = 140;
+const SWITCH = 165; // approved case screen fades in
 
 /** Press feedback drawn over the real "Approve visit" button. */
 const ButtonPress: React.FC = () => {
@@ -68,7 +68,7 @@ export const ApprovalScene: React.FC = () => {
           { f: 50, x: 1092, y: 460, zoom: 1.05 },
           { f: SWITCH, x: 1092, y: 520, zoom: 1.05 },
           { f: SWITCH + 30, x: 1110, y: 1140, zoom: 0.94 },
-          { f: 240, x: 1110, y: 1150, zoom: 0.95 },
+          { f: 255, x: 1110, y: 1150, zoom: 0.95 },
         ]}
         overlay={
           <>
@@ -109,7 +109,7 @@ export const ApprovalScene: React.FC = () => {
             {frame < SWITCH + 4 ? (
               <Cursor
                 path={[
-                  { f: 78, x: 1300, y: 960 },
+                  { f: 100, x: 1300, y: 960 },
                   { f: CLICK - 4, x: 1100, y: 752 },
                 ]}
                 clickAt={CLICK}
@@ -144,13 +144,13 @@ export const ApprovalScene: React.FC = () => {
         <Audio src={staticFile("sfx/whoosh.wav")} volume={0.14} />
       </Sequence>
 
-      <Caption from={0.3 * fps} durationInFrames={3.5 * fps}>
+      <Narration voice="s5a" from={8}>
         The cost is over the limit, so the AI stops and explains why.
-      </Caption>
-      <Caption from={3.9 * fps} durationInFrames={4 * fps}>
+      </Narration>
+      <Narration voice="s5b" from={120}>
         A person approves with one click, and the decision goes into the audit
         log.
-      </Caption>
+      </Narration>
     </AbsoluteFill>
   );
 };

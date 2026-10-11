@@ -9,7 +9,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Caption } from "../components/Caption";
+import { Narration } from "../components/Caption";
 import { SampleDataBadge, StepChip } from "../components/SceneTitle";
 import { Highlight, Screen, Spotlight } from "../components/Screen";
 import { colors, easeOut, fontFamily } from "../theme";
@@ -17,10 +17,10 @@ import { colors, easeOut, fontFamily } from "../theme";
 // The app's matching order (engine.ts): same category, serves the building,
 // then sorted by rank and visit fee. Values are from the Technicians screen.
 const steps = [
-  { at: 92, label: "Specialty", value: "Heating" },
-  { at: 112, label: "Serves", value: "Building A" },
-  { at: 132, label: "Rank", value: "Primary" },
-  { at: 152, label: "Visit fee", value: "180 EUR, estimated" },
+  { at: 80, label: "Specialty", value: "Heating" },
+  { at: 105, label: "Serves", value: "Building A" },
+  { at: 150, label: "Rank", value: "Primary" },
+  { at: 175, label: "Visit fee", value: "180 EUR, estimated" },
 ];
 
 const StepPill: React.FC<{ at: number; label: string; value: string }> = ({
@@ -74,7 +74,7 @@ export const MatchScene: React.FC = () => {
           { f: 0, x: 960, y: 540, zoom: 0.72 },
           { f: 30, x: 960, y: 540, zoom: 0.72 },
           { f: 70, x: 1092, y: 470, zoom: 0.96 },
-          { f: 210, x: 1092, y: 480, zoom: 0.98 },
+          { f: 240, x: 1092, y: 480, zoom: 0.98 },
         ]}
         overlay={
           <>
@@ -153,12 +153,12 @@ export const MatchScene: React.FC = () => {
         </Sequence>
       ))}
 
-      <Caption from={0.3 * fps} durationInFrames={3.2 * fps}>
+      <Narration voice="s4a" from={8}>
         CareTaker only considers technicians who cover this trade and building.
-      </Caption>
-      <Caption from={3.6 * fps} durationInFrames={3.3 * fps}>
+      </Narration>
+      <Narration voice="s4b" from={136}>
         It recommends the best match by rank, then by visit fee.
-      </Caption>
+      </Narration>
     </AbsoluteFill>
   );
 };
